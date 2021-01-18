@@ -1,6 +1,6 @@
 const key = 'BArJpQCWyUZPQsyVA9v99wmWvwoML00b';
 
-// get weather information
+
 const getWeather = async (id) => {
 
     const base = "https://dataservice.accuweather.com/currentconditions/v1/";
@@ -13,7 +13,6 @@ const getWeather = async (id) => {
 };
 
 
-// get city information
 const getCity = async (city) => {
 
     const base = "https://dataservice.accuweather.com/locations/v1/cities/search";
@@ -25,9 +24,5 @@ const getCity = async (city) => {
     return data[0];
 };
 
-// getCity("noida").then(data => {
-//     return getWeather(data.Key); 
-// }).then(data => {
-//     console.log(data);
-// }).catch(err => console.log(err));
+
 
