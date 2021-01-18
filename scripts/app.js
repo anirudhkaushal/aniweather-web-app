@@ -9,10 +9,6 @@ const updateUI = (data) => {
     const cityDets = data.cityDets;
     const weather = data.weather;
 
-    // another way to write the above code is by using destructing properties
-    // const {cityDets, weather} = data;
-
-    // update details template
     details.innerHTML = `
         <h5 class="my-3">${cityDets.LocalizedName}</h5>
         <div class="my-3">${weather.WeatherText}</div>
@@ -22,7 +18,6 @@ const updateUI = (data) => {
         </div>
     `;
 
-    //update the night and day and the icon images
     let timeSrc = null;
     if(weather.IsDayTime) {
         timeSrc = "img/day.svg";
@@ -31,8 +26,7 @@ const updateUI = (data) => {
     }
     time.setAttribute("src", timeSrc);
 
-    //applying the above condition using ternary operator
-    // let timeSrc = weather.IsDayTime ? "img/day.svg" : "img/night.svg";
+
 
     const iconSrc = `img/icons/${weather.WeatherIcon}.svg`;
     icon.setAttribute("src", iconSrc);
@@ -54,28 +48,22 @@ const updateCity = async (city) => {
         weather: weather
     };
     
-    // object shorthand notation...below
-
-    // return {
-    //     cityDets,
-    //     weather
-    // };
 
 };
 
 cityForm.addEventListener("submit", e => {
-    e.preventDefault(); // prevent default action
+    e.preventDefault(); 
 
-    // get the city value
+   
     const city = cityForm.city.value.trim();
     cityForm.reset();
 
-    // update the ui with new city
+   
     updateCity(city)
         .then(data => updateUI(data))
         .catch(err => console.log(err));
 
-    // set local storage
+    
     localStorage.setItem("city", city);
 });
 
